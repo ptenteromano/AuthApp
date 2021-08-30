@@ -13,25 +13,10 @@
 #  last_login_time :datetime         not null
 #  uuid            :string           not null
 #
-class User < ApplicationRecord
-  has_secure_password
-  after_initialize :init
+class Admin < User
+  default_scope { where(admin: true) }
 
-  scope :admins, -> { where(admin: true) }
-  scope :customers, -> { where(admin: false) }
-
-  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
-
-  def init
-    self.last_login_time ||= Time.zone.now
-    self.uuid ||= SecureRandom.uuid
-  end
-
-  def admin?
-    admin
-  end
-
-  def customer?
-    !admin
+  before_save do
+    self.admin = true
   end
 end

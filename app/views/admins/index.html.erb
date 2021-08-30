@@ -1,0 +1,24 @@
+<h6>All Customer Information</h6>
+<%= link_to 'View your info', admin_show_path %>
+<br/>
+
+<% @customers.each do |customer| %>
+  <div>
+    <label>Email:</label>
+    <%= customer.email %>
+    <br/>
+    <label>First name:</label>
+    <%= customer.first_name %>
+    <br/>
+    <label>Last name:</label>
+    <%= customer.last_name %>
+    <br/>
+    <label>Last log in:</label>
+    <%= customer.last_login_time %>
+    <br/>
+    <%= link_to 'View', customer_show_path(customer.uuid) %>
+  </div>
+  <br/>
+<% end %>
+
+<%= link_to 'logout', logout_path %>

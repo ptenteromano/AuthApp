@@ -1,0 +1,18 @@
+<h6>Customer information</h6>
+
+<div>
+  <label>Email:</label>
+  <%= @customer.email %>
+  <br/>
+  <label>First name:</label>
+  <%= @customer.first_name %>
+  <br/>
+  <label>Last name:</label>
+  <%= @customer.last_name %>
+  <br/>
+  <label>Last log in:</label>
+  <%= @customer.last_login_time %>
+  <br/>
+</div>
+
+<%= link_to "back", :back %>

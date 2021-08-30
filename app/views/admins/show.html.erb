@@ -1,0 +1,20 @@
+<h6>Your Admin information</h6>
+<%= link_to 'View Customers', :admin_dashboard %>
+<br/>
+
+<div>
+  <label>Email:</label>
+  <%= @current_user.email %>
+  <br/>
+  <label>First name:</label>
+  <%= @current_user.first_name %>
+  <br/>
+  <label>Last name:</label>
+  <%= @current_user.last_name %>
+  <br/>
+  <label>Last log in:</label>
+  <%= @current_user.last_login_time %>
+  <br/>
+</div>
+
+<%= link_to 'logout', logout_path %>
