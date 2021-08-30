@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   ##
+  # Polymorphic login solution
+  #
   # @param [ActiveModel] model - which model to login as
   def login_user(model: User)
     flash.clear
@@ -44,13 +46,14 @@ class ApplicationController < ActionController::Base
 
   def authorized?
     return if current_user&.admin? ||
-              (current_user.present? && current_user.uuid == params[:uuid])
+              (logged_in? && current_user.uuid == params[:uuid])
 
     redirect_to root_path
   end
 
   private
 
+  # Updates the login time on every login
   def update_login_time(user)
     user.last_login_time = Time.zone.now
     user.save!

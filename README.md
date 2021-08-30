@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Authentication App.
+User Model is a parent class for the:
+1. Admin
+2. Customer
 
-Things you may want to cover:
+Admins are able to view and edit all Customers
+Customers are only able to view themselves.
 
 * Ruby version
+- 2.7.3
 
 * System dependencies
-
-* Configuration
+- rspec, et al
 
 * Database creation
+- postgres sql
 
 * Database initialization
+`rails db:seed`
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`rspec spec/`
