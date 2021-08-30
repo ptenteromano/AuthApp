@@ -34,7 +34,10 @@ group :development, :test do
 end
 
 group :test do
-  gem "rspec-rails", "~> 5.0"
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'mocha', '~> 1.13'
+  gem 'rails-controller-testing', '~> 1.0'
+  gem 'rspec-rails', '~> 5.0'
 end
 
 group :development do

@@ -1,12 +1,12 @@
 class CustomersController < ApplicationController
   before_action :customer?, only: [:index]
-  before_action :logged_in?, only: [:show]
+  before_action :authorized?, only: [:show]
   before_action :go_to_dashboard?, only: [:login]
 
   # GET to show login form
   def login; end
 
-# POST to login customer
+  # POST to login customer
   def login_submit
     params.permit(:email, :password, :authenticity_token, :commit)
 
@@ -18,6 +18,7 @@ class CustomersController < ApplicationController
     @current_user = current_user
   end
 
+  # GET to /customer/show/:uuid
   def show
     @customer = Customer.find_by(uuid: params[:uuid])
 

@@ -19,4 +19,6 @@ class Customer < User
   before_save do
     self.admin = false
   end
+
+  validates :admin, inclusion: { in: [false], message: 'Must be false' }
 end

@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :admin?, only: [:index]
+  before_action :authorized?, only: [:show]
   before_action :go_to_dashboard?, only: [:login]
 
   # GET to show login form

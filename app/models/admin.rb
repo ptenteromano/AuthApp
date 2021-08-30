@@ -19,4 +19,6 @@ class Admin < User
   before_save do
     self.admin = true
   end
+
+  validates :admin, inclusion: { in: [true], message: 'Must be true' }
 end

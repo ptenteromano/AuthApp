@@ -42,6 +42,13 @@ class ApplicationController < ActionController::Base
     redirect_to customer_dashboard_path
   end
 
+  def authorized?
+    return if current_user&.admin? ||
+              (current_user.present? && current_user.uuid == params[:uuid])
+
+    redirect_to root_path
+  end
+
   private
 
   def update_login_time(user)
